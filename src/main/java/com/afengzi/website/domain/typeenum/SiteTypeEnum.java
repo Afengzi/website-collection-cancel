@@ -1,8 +1,21 @@
 package com.afengzi.website.domain.typeenum;
 
+
 /**
+ * <title>SiteTypeEnum</title>
+ *
+ * <project>website-collection</project>
+ *
+ * <package>com.afengzi.website.domain.typeenum</package>
+ *
+ * <file>SiteTypeEnum.java</file>
+ *
+ * <date>2014年6月9日 下午9:59:53</date>
+ *
+ * <brief></brief>
+ *
  * @author klov
- * 网站类型
+ *
  */
 public enum SiteTypeEnum {
 

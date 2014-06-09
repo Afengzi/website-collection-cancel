@@ -1,0 +1,18 @@
+1、mongodb_start.bat
+	E:\green_software\mongodb-32-2.4.8\bin\mongod -dbpath G:\mongodb_data
+
+2、mongodb_use.bat
+	E:\green_software\mongodb-32-2.4.8\bin\mongo.exe
+	
+3、創建數據庫
+	 use website
+
+4、 查看当前库
+	db
+
+5、创建集合
+	db.createCollection("website.technology.development")
+	{ "ok" : 1 }
+	
+6、展示所有库
+	 show dbs

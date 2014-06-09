@@ -1,5 +1,5 @@
 package com.afengzi.website.dao;
 
-public class BaseDao {
+public class BaseDao{
 
 }
