@@ -27,7 +27,7 @@ import com.mongodb.MongoOptions;
  * @author klov
  * 
  */
-public abstract class BaseDao {
+public class BaseDao {
 
 	private String collectionName;
 	protected DBCollection dbCollection;
