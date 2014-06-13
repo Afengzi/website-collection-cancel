@@ -1,4 +1,4 @@
-package com.afengzi.website.dao;
+package com.afengzi.website.util;
 
 import java.net.UnknownHostException;
 

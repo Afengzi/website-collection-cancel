@@ -1,15 +1,17 @@
 package com.afengzi.website.dao;
 
-import java.net.UnknownHostException;
-
-import javax.management.RuntimeErrorException;
-
-import com.afengzi.website.domain.site.technology.Technology;
+import com.afengzi.website.domain.base.Website;
+import com.afengzi.website.domain.site.techonlogy.Technology;
 import com.afengzi.website.util.Bean2DBObjectUril;
+import com.afengzi.website.util.MongoDataSource;
+import com.afengzi.website.util.StringUtil;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.Mongo;
-import com.mongodb.MongoOptions;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * <title>BaseDao</title>
@@ -29,8 +31,11 @@ import com.mongodb.MongoOptions;
  */
 public class BaseDao {
 
+    private static final Logger logger = Logger.getLogger("BaseDao");
+
 	private String collectionName;
 	protected DBCollection dbCollection;
+    @Autowired
 	protected MongoDataSource dataSource;
 
 	
@@ -44,10 +49,13 @@ public class BaseDao {
 		dbCollection = dataSource.getDb().getCollection(this.collectionName);
 	}
 
-	protected void insert(Technology technology){
-		DBObject dbObj = Bean2DBObjectUril.convertObject(technology);
-		dbCollection.insert(dbObj);
+	protected void persist(DBObject dbObject){
+		dbCollection.insert(dbObject);
 	}
+
+    protected DBCursor query(DBObject dbObject){
+        return dbCollection.find(dbObject);
+    }
 
 	/****************getter and setter*************************/
 	public String getCollectionName() {

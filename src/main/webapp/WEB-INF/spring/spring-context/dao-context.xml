@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="dataSource" class="com.afengzi.website.util.MongoDataSource">
+        <constructor-arg name="poolSize" value="10"/>
+        <constructor-arg name="autoConnectRetry" value="true"/>
+        <constructor-arg name="maxWaitTime" value="5000"/>
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="27017"/>
+        <constructor-arg name="databaseName" value="sitecollection"/>
+	</bean>
+
+    <bean id="technologyDao" class="com.afengzi.website.dao.technology.impl.TechnologyDaoImpl">
+           <property name="collectionName" value=""/>
+    </bean>
+
+</beans>

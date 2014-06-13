@@ -5,7 +5,5 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-    <import resource="spring-context/dao-context.xml"/>
-    <import resource="spring-context/manager-context.xml"/>
-    <import resource="spring-context/service-context.xml"/>
+    <bean id="websiteService" class="com.afengzi.website.service.impl.WebsiteServiceImpl"/>
 </beans>
