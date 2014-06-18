@@ -10,11 +10,11 @@
         <constructor-arg name="maxWaitTime" value="5000"/>
         <constructor-arg name="host" value="127.0.0.1"/>
         <constructor-arg name="port" value="27017"/>
-        <constructor-arg name="databaseName" value="sitecollection"/>
+        <constructor-arg name="databaseName" value="website"/>
 	</bean>
 
     <bean id="technologyDao" class="com.afengzi.website.dao.technology.impl.TechnologyDaoImpl">
-           <property name="collectionName" value=""/>
+           <property name="collectionName" value="technology.development"/>
     </bean>
 
 </beans>

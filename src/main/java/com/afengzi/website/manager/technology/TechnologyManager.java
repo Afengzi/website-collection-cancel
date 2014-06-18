@@ -20,4 +20,6 @@ public interface TechnologyManager {
      * @return
      */
     public List<TechnologyVo> getTechnologyVoList(TechnologyQuery technologyQuery);
+
+    public boolean insertOneWebsite(Technology technology);
 }

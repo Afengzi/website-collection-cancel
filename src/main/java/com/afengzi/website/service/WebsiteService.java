@@ -19,4 +19,13 @@ public interface WebsiteService {
      * @return
      */
     public List<? extends WebsiteVo> getWebsiteVoList(String userName);
+
+    /**
+     * 添加一条站点
+     * @param url
+     * @param title 标题
+     * @param description 描述 可空
+     * @return
+     */
+    public boolean addOneWebsite(String url,String title,String description);
 }

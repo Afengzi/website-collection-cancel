@@ -1,6 +1,7 @@
 package com.afengzi.website;
 
 import com.afengzi.website.domain.base.WebsiteVo;
+import com.afengzi.website.manager.technology.TechnologyManager;
 import com.afengzi.website.service.WebsiteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,8 @@ public class IndexController {
 
     @Autowired
     private WebsiteService websiteService;
+
+
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -53,7 +56,5 @@ public class IndexController {
         return "index";
     }
 
-    public void setWebsiteService(WebsiteService websiteService) {
-        this.websiteService = websiteService;
-    }
+
 }
