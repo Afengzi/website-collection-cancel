@@ -1,6 +1,5 @@
 package com.afengzi.website.controller.technology;
 
-import com.afengzi.website.manager.technology.TechnologyManager;
 import com.afengzi.website.service.WebsiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

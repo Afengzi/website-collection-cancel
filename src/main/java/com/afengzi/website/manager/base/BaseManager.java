@@ -1,10 +1,14 @@
 package com.afengzi.website.manager.base;
 
-import com.afengzi.website.domain.base.Website;
+import com.afengzi.website.domain.site.WebsiteVo;
 import com.mongodb.BasicDBObject;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -48,5 +52,41 @@ public class BaseManager {
 
         }
         return dbObj;
+    }
+
+    protected <T> T convertDBObject(DBObject dbObject,Object obj){
+        if(dbObject==null||obj==null){
+            return null ;
+        }
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for(Field field : fields){
+            if(field==null){
+                return null ;
+            }
+            field.setAccessible(true);
+            Object value = dbObject.get(field.getName());
+            try {
+                field.set(obj,value);
+            } catch (IllegalAccessException e) {
+                logger.error(e);
+            }
+        }
+        return (T)obj;
+    }
+
+    protected <T> List<T> convertDBCursor(DBCursor dbCursor){
+        List list = new ArrayList() ;
+        if(dbCursor==null){
+            return list ;
+        }
+        Object obj = new Object();
+        while (dbCursor.hasNext()){
+            Object obj2 = convertDBObject(dbCursor.next(),obj);
+            if(obj2!=null){
+                list.add(obj) ;
+            }
+        }
+        return list ;
+
     }
 }

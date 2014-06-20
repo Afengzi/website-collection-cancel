@@ -3,10 +3,30 @@
     <title>Home</title>
 </head>
 <body>
+<tbody>
+    #if($!websiteVoList && websiteVoList.size()>0)
+      #foreach($websiteVo in $websiteVoList)
+          <table border="1">
+              <tr>
+                  <td>$!websiteVo.</td>
+                  <td><a href="$!websiteVo.url">$!websiteVo.title</a></td>
+
+
+              </tr>
+
+          </table>
+
+      #end
+
+    #end
+
+
+</tbody>
+
 <h1>
     Hello world!
 </h1>
 
-<P>  The time on the server is $serverTime. </P>
+<P> The time on the server is $serverTime. </P>
 </body>
 </html>

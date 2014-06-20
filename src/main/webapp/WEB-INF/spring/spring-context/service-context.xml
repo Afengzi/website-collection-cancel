@@ -5,5 +5,5 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-    <bean id="websiteService" class="com.afengzi.website.service.impl.WebsiteServiceImpl"/>
+    <!--<bean id="websiteService" class="com.afengzi.website.service.impl.WebsiteServiceImpl"/>-->
 </beans>

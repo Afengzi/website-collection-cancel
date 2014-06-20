@@ -1,8 +1,8 @@
 package com.afengzi.website.manager.technology;
 
-import com.afengzi.website.domain.site.techonlogy.Technology;
-import com.afengzi.website.domain.site.techonlogy.TechnologyQuery;
-import com.afengzi.website.domain.site.techonlogy.TechnologyVo;
+import com.afengzi.website.domain.site.Website;
+import com.afengzi.website.domain.site.WebsiteQuery;
+import com.afengzi.website.domain.site.WebsiteVo;
 
 import java.util.List;
 
@@ -16,10 +16,11 @@ import java.util.List;
 public interface TechnologyManager {
     /**
      * 获取技术站点集合
-     * @param technologyQuery
+     *
+     * @param websiteQuery
      * @return
      */
-    public List<TechnologyVo> getTechnologyVoList(TechnologyQuery technologyQuery);
+    public List<WebsiteVo> getTechnologyVoList(WebsiteQuery websiteQuery);
 
-    public boolean insertOneWebsite(Technology technology);
+    public boolean insertOneWebsite(Website technology);
 }

@@ -1,4 +1,4 @@
-package com.afengzi.website.domain.site.techonlogy;
+package com.afengzi.website.domain.site;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,7 +7,7 @@ package com.afengzi.website.domain.site.techonlogy;
  * Time: обнГ5:35
  * To change this template use File | Settings | File Templates.
  */
-public class TechnologyQuery {
+public class WebsiteQuery {
     private String userPin ;
     private int type ;
 

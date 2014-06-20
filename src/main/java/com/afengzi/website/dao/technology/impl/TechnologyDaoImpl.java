@@ -2,7 +2,6 @@ package com.afengzi.website.dao.technology.impl;
 
 import com.afengzi.website.dao.BaseDao;
 import com.afengzi.website.dao.technology.TechnologyDao;
-import com.afengzi.website.domain.site.techonlogy.Technology;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
@@ -13,8 +12,13 @@ import com.mongodb.DBObject;
  * Time: ÏÂÎç8:21
  * To change this template use File | Settings | File Templates.
  */
+//@Repository(value = "technologyDao")
 public class TechnologyDaoImpl extends BaseDao implements TechnologyDao {
-    @Override
+
+
+    private String collectionName;
+
+    //    @Override
     public void insert(DBObject dbObject) {
         persist(dbObject);
     }
@@ -23,4 +27,17 @@ public class TechnologyDaoImpl extends BaseDao implements TechnologyDao {
     public DBCursor queryTechnologyList(DBObject dbObject) {
         return query(dbObject);
     }
+
+    @Override
+    public String getCollectionName() {
+        return this.collectionName;
+    }
+
+    /**
+     * *******setter getter************
+     */
+    public void setCollectionName(String collectionName) {
+        this.collectionName = collectionName;
+    }
+
 }

@@ -1,7 +1,5 @@
 package com.afengzi.website;
 
-import com.afengzi.website.domain.base.WebsiteVo;
-import com.afengzi.website.manager.technology.TechnologyManager;
 import com.afengzi.website.service.WebsiteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +30,7 @@ public class IndexController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/index2", method = RequestMethod.GET)
 	public String index2(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -48,7 +46,7 @@ public class IndexController {
     @RequestMapping(value = "/")
     public String index(Locale locale, Model model){
         List<? extends WebsiteVo> websiteVoList = websiteService.getWebsiteVoList("");
-        model.addAttribute("wesiteVoList",websiteVoList);
+        model.addAttribute("websiteVoList",websiteVoList);
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
         String formattedDate = dateFormat.format(date);

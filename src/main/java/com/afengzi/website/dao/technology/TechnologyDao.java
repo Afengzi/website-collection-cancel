@@ -1,10 +1,7 @@
 package com.afengzi.website.dao.technology;
 
-import com.afengzi.website.domain.site.techonlogy.Technology;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,12 +13,14 @@ import java.util.List;
 public interface TechnologyDao {
     /**
      * 插入一条技术站点
+     *
      * @param dbObject
      */
     public void insert(DBObject dbObject);
 
     /**
      * 获取技术站点
+     *
      * @param dbObject
      * @return
      */

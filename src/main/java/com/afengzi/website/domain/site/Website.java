@@ -1,4 +1,4 @@
-package com.afengzi.website.domain.base;
+package com.afengzi.website.domain.site;
 
 import java.util.Date;
 

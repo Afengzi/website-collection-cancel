@@ -14,7 +14,8 @@
 	</bean>
 
     <bean id="technologyDao" class="com.afengzi.website.dao.technology.impl.TechnologyDaoImpl">
-           <property name="collectionName" value="technology.development"/>
+          <property name="collectionName" value="technology.development"/>
+          <property name="dataSource" ref="dataSource"/>
     </bean>
 
 </beans>
