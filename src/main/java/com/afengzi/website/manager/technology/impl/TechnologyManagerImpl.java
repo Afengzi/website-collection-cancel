@@ -17,7 +17,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-11
- * Time: обнГ7:55
+ * Time: О©╫О©╫О©╫О©╫7:55
  * To change this template use File | Settings | File Templates.
  */
 @Component(value = "technologyManager")
@@ -49,8 +49,8 @@ public class TechnologyManagerImpl extends BaseManager implements TechnologyMana
     }
 
     @Override
-    public boolean insertOneWebsite(Website technology) {
-        technologyDao.insert(convertWebsiteBean(technology));
+    public boolean insertOneWebsite(Website website) {
+        technologyDao.insert(convertWebsiteBean(website));
         return true;
     }
 

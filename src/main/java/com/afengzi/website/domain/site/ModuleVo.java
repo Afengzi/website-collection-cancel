@@ -6,12 +6,16 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-20
- * Time: ÏÂÎç7:17
+ * Time: ï¿½ï¿½ï¿½ï¿½7:17
  * To change this template use File | Settings | File Templates.
  */
-public class BranchVo {
+public class ModuleVo {
+    /**
+     * @see com.afengzi.website.domain.typeenum.SiteTypeEnum
+     */
     private int type;
-    private String branchName;
+    private String moduleName;
+    private int priority;
     private List<WebsiteVo> websiteVoList;
 
     public int getType() {
@@ -22,12 +26,20 @@ public class BranchVo {
         this.type = type;
     }
 
-    public String getBranchName() {
-        return branchName;
+    public String getModuleName() {
+        return moduleName;
     }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public List<WebsiteVo> getWebsiteVoList() {

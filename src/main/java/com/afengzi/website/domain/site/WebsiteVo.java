@@ -4,15 +4,16 @@ package com.afengzi.website.domain.site;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-20
- * Time: ÉÏÎç9:39
+ * Time: ï¿½ï¿½ï¿½ï¿½9:39
  * To change this template use File | Settings | File Templates.
  */
 public class WebsiteVo {
-    private int id ;
-    private String url ;
-    private String title ;
+    private int id;
+    private int priority;
+    private String url;
+    private String title;
     private String description;
-    private int kind ;
+    private int kind;
 
     public int getId() {
         return id;
@@ -20,6 +21,14 @@ public class WebsiteVo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public String getUrl() {

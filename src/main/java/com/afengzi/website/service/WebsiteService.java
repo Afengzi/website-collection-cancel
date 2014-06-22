@@ -1,17 +1,19 @@
 package com.afengzi.website.service;
 
+import com.afengzi.website.domain.site.WebsiteVo;
+
 import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-11
- * Time: ÏÂÎç7:50
+ * Time: ï¿½ï¿½ï¿½ï¿½7:50
  * To change this template use File | Settings | File Templates.
  */
 public interface WebsiteService {
     /**
-     * »ñÈ¡ÓÃ»§µÄÕ¾µã¼¯ºÏ
+     * ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½ï¿½Õ¾ï¿½ã¼¯ï¿½ï¿½
      *
      * @param userName
      * @return
@@ -19,10 +21,10 @@ public interface WebsiteService {
     public List<? extends WebsiteVo> getWebsiteVoList(String userName);
 
     /**
-     * Ìí¼ÓÒ»ÌõÕ¾µã
+     * ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Õ¾ï¿½ï¿½
      * @param url
-     * @param title ±êÌâ
-     * @param description ÃèÊö ¿É¿Õ
+     * @param title ï¿½ï¿½ï¿½ï¿½
+     * @param description ï¿½ï¿½ï¿½ï¿½ ï¿½É¿ï¿½
      * @return
      */
     public boolean addOneWebsite(String url,String title,String description);

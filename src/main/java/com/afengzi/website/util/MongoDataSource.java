@@ -3,6 +3,7 @@ package com.afengzi.website.util;
 import java.net.UnknownHostException;
 
 import com.mongodb.DB;
+import com.mongodb.DBAddress;
 import com.mongodb.Mongo;
 import com.mongodb.MongoOptions;
 import org.springframework.stereotype.Component;
@@ -16,16 +17,16 @@ import org.springframework.stereotype.Component;
  * 
  * <file>MongoDataSource.java</file>
  * 
- * <date>2014Äê6ÔÂ10ÈÕ ÏÂÎç11:12:18</date>
+ * <date>2014ï¿½ï¿½6ï¿½ï¿½10ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½11:12:18</date>
  * 
- * <brief>mongodbÇý¶¯Êý¾ÝÔ´
- * connectionsPerHost£ºÃ¿¸öÖ÷»úµÄÁ¬½ÓÊý
- * threadsAllowedToBlockForConnectionMultiplier£ºÏß³Ì¶ÓÁÐÊý£¬
- * 	ËüÒÔÉÏÃæconnectionsPerHostÖµÏà³ËµÄ½á¹û¾ÍÊÇÏß³Ì¶ÓÁÐ×î´óÖµ¡£Èç¹ûÁ¬½ÓÏß³ÌÅÅÂúÁË¶ÓÁÐ¾Í»áÅ×³ö¡°Out of semaphores to
- * 	get db¡±´íÎó¡£ maxWaitTime:×î´óµÈ´ýÁ¬½ÓµÄÏß³Ì×èÈûÊ±¼ä 
- * connectTimeout£ºÁ¬½Ó³¬Ê±µÄºÁÃë¡£0ÊÇÄ¬ÈÏºÍÎÞÏÞ
- * socketTimeout£ºsocket³¬Ê±¡£0ÊÇÄ¬ÈÏºÍÎÞÏÞ
- * autoConnectRetry£ºÕâ¸ö¿ØÖÆÊÇ·ñÔÚÒ»¸öÁ¬½ÓÊ±£¬ÏµÍ³»á×Ô¶¯ÖØÊÔ
+ * <brief>mongodbï¿½ï¿½ï¿½ï¿½ï¿½Ô´
+ * connectionsPerHostï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * threadsAllowedToBlockForConnectionMultiplierï¿½ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½connectionsPerHostÖµï¿½ï¿½ËµÄ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¶ï¿½ï¿½Ð¾Í»ï¿½ï¿½×³ï¿½ï¿½ï¿½Out of semaphores to
+ * 	get dbï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ maxWaitTime:ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ 
+ * connectTimeoutï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½Ê±ï¿½Äºï¿½ï¿½ë¡£0ï¿½ï¿½Ä¬ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½
+ * socketTimeoutï¿½ï¿½socketï¿½ï¿½Ê±ï¿½ï¿½0ï¿½ï¿½Ä¬ï¿½Ïºï¿½ï¿½ï¿½ï¿½ï¿½
+ * autoConnectRetryï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
  * </brief>
  * 
  * @author klov
@@ -41,7 +42,9 @@ public class MongoDataSource {
 
 	private String host;
 	private int port;
-	private String databaseName; 
+	private String databaseName;
+
+    protected DB db ;
 
 	public MongoDataSource(int poolSize, boolean autoConnectRetry, int maxWaitTime, String host,
 			int port,String databaseName) {
@@ -53,11 +56,18 @@ public class MongoDataSource {
 		this.port = port;
 		this.databaseName=databaseName;
 
-		initMongo();
+		initMongoDB();
 	}
 
-	protected void initMongo() {
-		try {
+	protected void initMongoDB() {
+
+        try {
+            DBAddress address = new DBAddress(host,port,databaseName);
+            db = Mongo.connect(address);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+		/*try {
 			mongo = new Mongo(host, port);
 		} catch (UnknownHostException e) {
 			throw new RuntimeException("can not connection mongodb host", e);
@@ -65,26 +75,35 @@ public class MongoDataSource {
 		MongoOptions option = mongo.getMongoOptions();
 		option.setAutoConnectRetry(autoConnectRetry);
 		option.setConnectionsPerHost(poolSize);
-		option.setMaxWaitTime(maxWaitTime);
+		option.setMaxWaitTime(maxWaitTime);*/
 
 	}
 
 	/**
-	 * »ñÈ¡mongodb
+	 * ï¿½ï¿½È¡mongodb
 	 * @return
 	 */
 	public Mongo getMongo() {
 		return mongo;
 	}
-	/**
-	 * »ñÈ¡DB
-	 * @return
-	 */
-	public DB getDb(){
-		return mongo.getDB(databaseName);
-	}
 
-	public int getPoolSize() {
+    public String getDatabaseName() {
+        return databaseName;
+    }
+
+    public void setDatabaseName(String databaseName) {
+        this.databaseName = databaseName;
+    }
+
+    public DB getDb() {
+        return db;
+    }
+
+    public void setDb(DB db) {
+        this.db = db;
+    }
+
+    public int getPoolSize() {
 		return poolSize;
 	}
 
