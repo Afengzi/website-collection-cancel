@@ -1,5 +1,7 @@
 package com.afengzi.website;
 
+import com.afengzi.website.domain.site.CategoryVo;
+import com.afengzi.website.domain.site.WebsiteVo;
 import com.afengzi.website.service.WebsiteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,8 +47,8 @@ public class IndexController {
 
     @RequestMapping(value = "/")
     public String index(Locale locale, Model model){
-        List<? extends WebsiteVo> websiteVoList = websiteService.getWebsiteVoList("");
-        model.addAttribute("websiteVoList",websiteVoList);
+        List<CategoryVo> categoryVoList = websiteService.getWebsiteVoList("");
+        model.addAttribute("categoryVoList",categoryVoList);
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
         String formattedDate = dateFormat.format(date);

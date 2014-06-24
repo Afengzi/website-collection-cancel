@@ -4,12 +4,13 @@
 </head>
 <body>
 <tbody>
-    #if($!websiteVoList && websiteVoList.size()>0)
-      #foreach($websiteVo in $websiteVoList)
+##    #if($!categoryVoList && categoryVoList.size()>0)
+      #foreach($categoryVo in $categoryVoList)
+
           <table border="1">
               <tr>
-                  <td>$!websiteVo.</td>
-                  <td><a href="$!websiteVo.url">$!websiteVo.title</a></td>
+                  <td>$!categoryVo.categoryName</td>
+##                  <td><a href="$!websiteVo.url">$!websiteVo.title</a></td>
 
 
               </tr>
@@ -18,7 +19,7 @@
 
       #end
 
-    #end
+##    #end
 
 
 </tbody>

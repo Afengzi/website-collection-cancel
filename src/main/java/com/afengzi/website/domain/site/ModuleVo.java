@@ -9,25 +9,25 @@ import java.util.List;
  * Time: ÏÂÎç7:17
  * To change this template use File | Settings | File Templates.
  */
-public class BranchVo {
-    private int type;
-    private String branchName;
+public class ModuleVo {
+    private int kind;
+    private String moduleName;
     private List<WebsiteVo> websiteVoList;
 
-    public int getType() {
-        return type;
+    public int getKind() {
+        return kind;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setKind(int kind) {
+        this.kind = kind;
     }
 
-    public String getBranchName() {
-        return branchName;
+    public String getModuleName() {
+        return moduleName;
     }
 
-    public void setBranchName(String branchName) {
-        this.branchName = branchName;
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
     }
 
     public List<WebsiteVo> getWebsiteVoList() {

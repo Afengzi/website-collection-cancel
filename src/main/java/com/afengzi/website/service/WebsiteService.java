@@ -1,5 +1,8 @@
 package com.afengzi.website.service;
 
+import com.afengzi.website.domain.site.CategoryVo;
+import com.afengzi.website.domain.site.WebsiteVo;
+
 import java.util.List;
 
 /**
@@ -16,7 +19,7 @@ public interface WebsiteService {
      * @param userName
      * @return
      */
-    public List<? extends WebsiteVo> getWebsiteVoList(String userName);
+    public List<CategoryVo> getWebsiteVoList(String userName);
 
     /**
      * 添加一条站点

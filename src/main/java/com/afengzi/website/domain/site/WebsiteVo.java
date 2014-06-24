@@ -8,17 +8,17 @@ package com.afengzi.website.domain.site;
  * To change this template use File | Settings | File Templates.
  */
 public class WebsiteVo {
-    private int id ;
-    private String url ;
-    private String title ;
+    private long id;
+    private String url;
+    private String title;
     private String description;
-    private int kind ;
+    private int moduleKine;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -46,11 +46,11 @@ public class WebsiteVo {
         this.description = description;
     }
 
-    public int getKind() {
-        return kind;
+    public int getModuleKine() {
+        return moduleKine;
     }
 
-    public void setKind(int kind) {
-        this.kind = kind;
+    public void setModuleKine(int moduleKine) {
+        this.moduleKine = moduleKine;
     }
 }

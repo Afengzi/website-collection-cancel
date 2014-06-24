@@ -10,9 +10,10 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class CategoryVo {
+
     private int type ;
     private String categoryName ;
-    private List<BranchVo> branchVoList ;
+    private List<ModuleVo> moduleVoList ;
 
     public int getType() {
         return type;
@@ -30,11 +31,11 @@ public class CategoryVo {
         this.categoryName = categoryName;
     }
 
-    public List<BranchVo> getBranchVoList() {
-        return branchVoList;
+    public List<ModuleVo> getModuleVoList() {
+        return moduleVoList;
     }
 
-    public void setBranchVoList(List<BranchVo> branchVoList) {
-        this.branchVoList = branchVoList;
+    public void setModuleVoList(List<ModuleVo> moduleVoList) {
+        this.moduleVoList = moduleVoList;
     }
 }

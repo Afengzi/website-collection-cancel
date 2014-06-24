@@ -1,6 +1,10 @@
 package com.afengzi.website.manager.base;
 
+import com.afengzi.website.domain.site.ModuleVo;
+import com.afengzi.website.domain.site.Website;
 import com.afengzi.website.domain.site.WebsiteVo;
+import com.afengzi.website.domain.typeenum.CategoryTypeEnum;
+import com.afengzi.website.domain.typeenum.TechnologyModuleKindEnum;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
@@ -89,4 +93,64 @@ public class BaseManager {
         return list ;
 
     }
+    protected ModuleVo convert2ModuleVo(List<Website> websiteList,int kindEnum){
+        ModuleVo moduleVo = new ModuleVo();
+        List<WebsiteVo> WebsiteVoList = new ArrayList<WebsiteVo>() ;
+        WebsiteVo websiteVo = null ;
+        for (Website website : websiteList){
+            if(website==null){
+                continue;
+            }
+            if (kindEnum==CategoryTypeEnum.TECHNOLOGY.getValue()){
+                for (TechnologyModuleKindEnum technologyModuleKindEnum : TechnologyModuleKindEnum.values()){
+                    if (website.getModuleKind()== technologyModuleKindEnum.getValue()){
+                        websiteVo = convert2WebsiteVo(website);
+                        WebsiteVoList.add(websiteVo);
+                    }
+                }
+
+            }
+//            if (kindEnum == CategoryTypeEnum.LIFE.getValue())
+
+        }
+        moduleVo.setWebsiteVoList(WebsiteVoList);
+        return moduleVo;
+    }
+
+    protected List<ModuleVo> getModuleVoList(DBCursor cursor, int categoryType) {
+
+        List<Website> websiteList = new ArrayList<Website>();
+        if (cursor == null) {
+            return null;
+        }
+        Website website = null;
+        while (cursor.hasNext()) {
+            website = new Website();
+            convertDBObject(cursor.next(), website);
+            if (website != null) {
+                websiteList.add(website);
+            }
+        }
+        List<ModuleVo> moduleVoList = new ArrayList<ModuleVo>();
+        ModuleVo moduleVo = null;
+
+        moduleVo = convert2ModuleVo(websiteList, categoryType);
+        if (moduleVo != null) {
+            moduleVoList.add(moduleVo);
+        }
+        return moduleVoList;
+
+    }
+
+
+    private WebsiteVo convert2WebsiteVo(Website website){
+        WebsiteVo websiteVo = new WebsiteVo();
+        websiteVo.setId(website.getId());
+        websiteVo.setDescription(website.getDescription());
+        websiteVo.setModuleKine(website.getModuleKind());
+        websiteVo.setTitle(website.getTitle());
+        websiteVo.setUrl(website.getUrl());
+        return websiteVo;
+    }
+
 }
