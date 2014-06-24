@@ -11,12 +11,12 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-11
- * Time: ÏÂÎç7:55
+ * Time: ï¿½ï¿½ï¿½ï¿½7:55
  * To change this template use File | Settings | File Templates.
  */
 public interface WebsiteManager {
     /**
-     * »ñÈ¡¼¼ÊõÕ¾µã¼¯ºÏ
+     * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ã¼¯ï¿½ï¿½
      *
      * @param websiteQuery
      * @return

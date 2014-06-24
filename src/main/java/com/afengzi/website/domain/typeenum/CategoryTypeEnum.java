@@ -10,7 +10,7 @@ package com.afengzi.website.domain.typeenum;
  *
  * <file>CategoryTypeEnum.java</file>
  *
- * <date>2014年6月9日 下午9:59:53</date>
+ * <date>2014锟斤拷6锟斤拷9锟斤拷 锟斤拷锟斤拷9:59:53</date>
  *
  * <brief></brief>
  *
@@ -19,7 +19,7 @@ package com.afengzi.website.domain.typeenum;
  */
 public enum CategoryTypeEnum {
 
-	TECHNOLOGY(1, "技术"), LIFE(2, "生活");
+	TECHNOLOGY(1, "绉戞妧"), LIFE(2, "鐢熸椿");
 	private int value;
 	private String name;
 
