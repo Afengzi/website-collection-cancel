@@ -6,5 +6,6 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
     <import resource="spring-context/dao-context.xml"/>
+    <import resource="spring-mongo-context.xml"/>
 
 </beans>
