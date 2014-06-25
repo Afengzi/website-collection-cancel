@@ -11,7 +11,7 @@ package com.afengzi.website.domain.typeenum;
  * @author klov
  *
  */
-public enum TechnologyModuleKindEnum implements EnumInterface{
+public enum TechnologyModuleKindEnum {
 
 	JAVA(1,"JAVA"),PYTHON(2,"PYTHON");
 
