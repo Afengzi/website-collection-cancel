@@ -13,7 +13,7 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-27
- * Time: ÉÏÎç9:49
+ * Time: ï¿½ï¿½ï¿½ï¿½9:49
  * To change this template use File | Settings | File Templates.
  */
 public class Sequence {
@@ -54,8 +54,8 @@ public class Sequence {
                 newPersistenceValue(name);
             } catch (Exception e) {
                 logger.error("newPersistenceValue is error.", e);
-                id = incrementAndGet(name);
             }
+            id = incrementAndGet(name);
         }
         step.setCurrentValue(id);
         step.setEndValue(id + blockSize);
@@ -63,10 +63,10 @@ public class Sequence {
     }
 
     /**
-     * findAndModify Ôö¼ÓblockSize
+     * findAndModify ï¿½ï¿½ï¿½ï¿½blockSize
      *
      * @param name
-     * @return !=Null:Ôö¼Ó³É¹¦ Null:name²»´æÔÚ,ÐèÏÈ±£´ænameÎÄµµ
+     * @return !=Null:ï¿½ï¿½ï¿½Ó³É¹ï¿½ Null:nameï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½nameï¿½Äµï¿½
      */
     private Long incrementAndGet(String name) {
         DBCollection collection = mongo.getDB(DATABASE_NAME).getCollection(COLLECTION_NAME);
