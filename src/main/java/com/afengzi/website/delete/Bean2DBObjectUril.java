@@ -1,12 +1,13 @@
-package com.afengzi.website.util;
+package com.afengzi.website.delete;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import org.apache.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import org.apache.log4j.Logger;
 
 /**
  * <title>Bean2DBObjectUril</title>
@@ -26,7 +27,8 @@ import org.apache.log4j.Logger;
 public class Bean2DBObjectUril {
 
     private static final Logger logger = Logger.getLogger("Bean2DBObjectUril");
-     /**
+
+    /**
      * @param objList
      * @return
      */
@@ -50,9 +52,9 @@ public class Bean2DBObjectUril {
      * @return
      */
     public static DBObject convertObject(Object obj) {
-        DBObject dbObj = new BasicDBObject();
+        DBObject dbObject = new BasicDBObject();
         if (obj == null) {
-            return dbObj;
+            return dbObject;
         }
         Field[] fields = obj.getClass().getDeclaredFields();
 
@@ -61,18 +63,49 @@ public class Bean2DBObjectUril {
                 continue;
             }
             field.setAccessible(true);
-            String key = field.getName();
+            String varName = field.getName();
             try {
-                Object value = field.get(obj);
-                dbObj.put(key, value);
+                Object param = field.get(obj);
+
+                if (param == null) {
+                    continue;
+                } else if (param instanceof Integer) {//判断变量的类型
+                    int value = ((Integer) param).intValue();
+                    dbObject.put(varName, value);
+                } else if (param instanceof String) {
+                    String value = (String) param;
+                    dbObject.put(varName, value);
+                } else if (param instanceof Double) {
+                    double value = ((Double) param).doubleValue();
+                    dbObject.put(varName, value);
+                } else if (param instanceof Float) {
+                    float value = ((Float) param).floatValue();
+                    dbObject.put(varName, value);
+                } else if (param instanceof Long) {
+                    long value = ((Long) param).longValue();
+                    dbObject.put(varName, value);
+                } else if (param instanceof Boolean) {
+                    boolean value = ((Boolean) param).booleanValue();
+                    dbObject.put(varName, value);
+                } else if (param instanceof Date) {
+                    Date value = (Date) param;
+                    dbObject.put(varName, value);
+                } else if(param instanceof List) {
+                    List paramList = (List) param;
+                    for (Object beanObj : paramList) {
+                        dbObject.put(varName, convertObject(beanObj));
+                    }
+
+                }
+
             } catch (IllegalArgumentException e) {
                 logger.error(e);
             } catch (IllegalAccessException e) {
-               logger.error(e);
+                logger.error(e);
             }
 
         }
-        return dbObj;
+        return dbObject;
 
     }
 
@@ -87,7 +120,7 @@ public class Bean2DBObjectUril {
             try {
                 field.set(object, dbObject.get(fieldName));
             } catch (IllegalAccessException e) {
-                logger.error("convert Object T to DBObject error",e);
+                logger.error("convert Object T to DBObject error", e);
             }
         }
         return object;

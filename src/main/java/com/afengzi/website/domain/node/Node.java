@@ -1,4 +1,6 @@
-package com.afengzi.website.domain.site.node;
+package com.afengzi.website.domain.node;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,19 +10,11 @@ package com.afengzi.website.domain.site.node;
  * To change this template use File | Settings | File Templates.
  */
 public class Node {
-    private int id;
+    private int _id;
     private String title;
     private int depth;
     private Node previous;
-    private Node latter;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private List<Node> latter;
 
     public String getTitle() {
         return title;
@@ -46,11 +40,19 @@ public class Node {
         this.previous = previous;
     }
 
-    public Node getLatter() {
+    public List<Node> getLatter() {
         return latter;
     }
 
-    public void setLatter(Node latter) {
+    public void setLatter(List<Node> latter) {
         this.latter = latter;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 }

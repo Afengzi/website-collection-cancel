@@ -9,7 +9,7 @@ import com.afengzi.website.domain.typeenum.CategoryTypeEnum;
 import com.afengzi.website.domain.typeenum.TechnologyModuleKindEnum;
 import com.afengzi.website.manager.technology.WebsiteManager;
 import com.afengzi.website.service.WebsiteService;
-import com.afengzi.website.util.StringUtil;
+import com.afengzi.website.util.sequence.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

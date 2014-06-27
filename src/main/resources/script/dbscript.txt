@@ -16,3 +16,14 @@
 	
 6、展示所有库
 	 show dbs
+
+7、findAndModify命令{该命令是原子操作,线程安全.生成自增长的ID}
+    db.runCommand(
+        {
+          findAndModify:"website.sequence_value",
+          query:{name:"website.group"},
+          update:{$inc:{id_value:1}}
+        }
+    )
+
+    db.website.sequence_value.find()

@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource" class="com.afengzi.website.util.MongoDataSource">
+	<bean id="dataSource" class="com.afengzi.website.delete.MongoDataSource">
         <constructor-arg name="poolSize" value="10"/>
         <constructor-arg name="autoConnectRetry" value="true"/>
         <constructor-arg name="maxWaitTime" value="5000"/>
