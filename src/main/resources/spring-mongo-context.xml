@@ -36,4 +36,13 @@
         <constructor-arg name="databaseName" value="website" />
     </bean>
 
+    <bean id="sequence" class="com.afengzi.website.util.sequence.Sequence">
+        <property name="blockSize" value="50"/>
+        <property name="mongo" ref="mongo"/>
+    </bean>
+
+    <bean id="sequenceUtil" class="com.afengzi.website.util.sequence.SequenceUtil">
+        <property name="defaultSequence" ref="sequence"/>
+    </bean>
+
 </beans>
