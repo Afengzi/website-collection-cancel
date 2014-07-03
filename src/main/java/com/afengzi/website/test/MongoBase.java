@@ -39,6 +39,26 @@ public class MongoBase {
         db.getCollection(collectionName).insert(dbObject) ;
     }
 
+    public void save(Object obj ,String collectionName){
+        JSONObject jsonObject = JSONObject.fromObject(obj) ;
+        DBObject dbObject = (DBObject)JSON.parse(jsonObject.toString()) ;
+        save(dbObject,collectionName);
+    }
+
+    public void update(String collectionName,DBObject query,DBObject update,boolean upset,boolean multi){
+       DBCursor cursor = db.getCollection(collectionName).find(query);
+        if (cursor.hasNext()){
+            System.out.println(cursor.hasNext());
+        }
+        db.getCollection(collectionName).update(query,update,upset,multi) ;
+    }
+
+    public void add2Set(String collectionName,DBObject query,DBObject update){
+       System.out.println("***************query : "+query);
+        System.out.println("***************update : "+update);
+        db.getCollection(collectionName).update(query,update);
+    }
+
     public DBCursor find(String collectionName){
         return db.getCollection(collectionName).find() ;
     }

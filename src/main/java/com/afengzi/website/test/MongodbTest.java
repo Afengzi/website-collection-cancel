@@ -2,12 +2,13 @@ package com.afengzi.website.test;
 
 
 import com.afengzi.website.domain.node.Node;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
-import com.mongodb.DBObject;
+import com.afengzi.website.util.sequence.Sequence;
+import com.afengzi.website.util.sequence.SequenceUtil;
+import com.mongodb.*;
 import com.mongodb.util.JSON;
 import net.sf.json.JSONObject;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +21,26 @@ import java.util.List;
  */
 public class MongodbTest extends MongoBase{
 
-    private static final String WEBSITE_GROUP_COLLECTION = "website.group" ;
+    private static final String WEBSITE_GROUP_COLLECTION = "website.directory" ;
     private static final String SEQUENCE_VALUE_COLLECTION = "sequence_value" ;
 
     public static void main(String[] args){
-        MongodbTest mongodb = new MongodbTest();
-        mongodb.automicInc();
+        MongodbTest mongodbTest = new MongodbTest();
+        mongodbTest.getId();
+
+    }
+
+    public Long getId(){
+        Sequence sequence = new Sequence();
+        sequence.setBlockSize(10);
+        sequence.setMongo(mongo());
+
+        SequenceUtil util = new SequenceUtil();
+        util.setDefaultSequence(sequence);
+
+        long id = util.get(WEBSITE_GROUP_COLLECTION) ;
+        System.out.println(id);
+        return id ;
 
     }
 
@@ -88,5 +103,17 @@ public class MongodbTest extends MongoBase{
 //        Node node2 = JSONObject.toBean(,Node.class);
 
         return dbObject;
+    }
+
+    private Mongo mongo(){
+        try {
+            DBAddress address = new DBAddress("127.0.0.1",27017,"website");
+            Mongo mongo = new Mongo(address);
+            return mongo;
+        } catch (UnknownHostException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null ;
+
     }
 }

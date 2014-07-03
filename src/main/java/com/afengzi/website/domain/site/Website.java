@@ -23,17 +23,11 @@ public class Website {
     private String title;
     private String url;
     private String description;
-    /**类型*/
-    /**
-     * @see com.afengzi.website.domain.typeenum.CategoryTypeEnum
-     */
-    private int categoryType;
-    /**
-     * @see com.afengzi.website.domain.typeenum.TechnologyModuleKindEnum
-     */
-    private int moduleKind;
     /*优先级*/
     private int priority;
+    private int nodeId;
+    private String nodeName;
+    private String userName;
     private Date created;
     private Date modified;
 
@@ -69,20 +63,20 @@ public class Website {
         this.description = description;
     }
 
-    public int getCategoryType() {
-        return categoryType;
+    public int getNodeId() {
+        return nodeId;
     }
 
-    public void setCategoryType(int categoryType) {
-        this.categoryType = categoryType;
+    public void setNodeId(int nodeId) {
+        this.nodeId = nodeId;
     }
 
-    public int getModuleKind() {
-        return moduleKind;
+    public String getNodeName() {
+        return nodeName;
     }
 
-    public void setModuleKind(int moduleKind) {
-        this.moduleKind = moduleKind;
+    public void setNodeName(String nodeName) {
+        this.nodeName = nodeName;
     }
 
     public int getPriority() {
@@ -107,5 +101,13 @@ public class Website {
 
     public void setModified(Date modified) {
         this.modified = modified;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

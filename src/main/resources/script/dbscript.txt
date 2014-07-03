@@ -11,7 +11,7 @@
 	db
 
 5、创建集合
-	db.createCollection("website.technology.development")
+	db.createCollection("website.sites")
 	{ "ok" : 1 }
 	
 6、展示所有库
@@ -27,3 +27,22 @@
     )
 
     db.website.sequence_value.find()
+
+8、db.website.sites.save(
+    {
+        "_id":1,
+        "title":"京东商城",
+        "url":"http://jd.com",
+        "priority":0,
+        "description":"life",
+        "node_id":"191",
+        "node_name":"开发",
+        "created":new Date(),
+        "modified":new Date()
+    }
+)
+
+9、value不存在时增加一个field
+
+    db.website.sites.update({"_id":1},{"$set":{"userName":"admin"}})
+

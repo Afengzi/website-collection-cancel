@@ -54,8 +54,8 @@ public class Sequence {
                 newPersistenceValue(name);
             } catch (Exception e) {
                 logger.error("newPersistenceValue is error.", e);
-                id = incrementAndGet(name);
             }
+            id = incrementAndGet(name);
         }
         step.setCurrentValue(id);
         step.setEndValue(id + blockSize);
@@ -71,15 +71,19 @@ public class Sequence {
     private Long incrementAndGet(String name) {
         DBCollection collection = mongo.getDB(DATABASE_NAME).getCollection(COLLECTION_NAME);
         DBObject query = new BasicDBObject();
-        query.put(NAME_COLUMN, COLLECTION_NAME);
+        query.put(NAME_COLUMN, name);
 
         DBObject update = new BasicDBObject();
         update.put("$inc", new BasicDBObject().append(VALUE_COLUMN, blockSize));
 
         DBObject dbObject = collection.findAndModify(query, update);
-        Map<String, Object> valueMap = (Map<String, Object>) dbObject.get("value");
-        if (valueMap != null) {
-            return (Long) valueMap.get(VALUE_COLUMN);
+//        Map<String, Object> valueMap = (Map<String, Object>) dbObject.get("value");
+//        if (valueMap != null) {
+//            return (Long) valueMap.get(VALUE_COLUMN);
+//        }
+        if (dbObject!=null){
+            Long doubleId = (Long)dbObject.get("id_value");
+            return doubleId ;
         }
 
         return null;
