@@ -1,15 +1,18 @@
 package com.afengzi.website.domain.site;
 
+import com.afengzi.website.domain.BaseDomain;
+
+import java.io.Serializable;
 import java.util.Date;
 
 /**
- * <title>Website</title>
+ * <title>Site</title>
  * <p/>
  * <project>website-collection</project>
  * <p/>
  * <package>com.afengzi.website.domain.site</package>
  * <p/>
- * <file>Website.java</file>
+ * <file>Site.java</file>
  * <p/>
  * <date>2014年6月9日 下午10:16:26</date>
  * <p/>
@@ -17,26 +20,25 @@ import java.util.Date;
  *
  * @author klov
  */
-public class Website {
+public class Site extends BaseDomain implements Serializable {
 
-    private long id;
+    private static final long serialVersionUID = 6977823849458882739L;
+    private long _id;
     private String title;
     private String url;
     private String description;
-    /*优先级*/
-    private int priority;
     private int nodeId;
     private String nodeName;
     private String userName;
     private Date created;
     private Date modified;
 
-    public long getId() {
-        return id;
+    public long get_id() {
+        return _id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void set_id(long _id) {
+        this._id = _id;
     }
 
     public String getTitle() {
@@ -79,14 +81,6 @@ public class Website {
         this.nodeName = nodeName;
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
     public Date getCreated() {
         return created;
     }
@@ -110,4 +104,5 @@ public class Website {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
 }

@@ -1,5 +1,7 @@
 package com.afengzi.website.domain.user;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: lixiuhai
@@ -7,7 +9,8 @@ package com.afengzi.website.domain.user;
  * Time: обнГ4:51
  * To change this template use File | Settings | File Templates.
  */
-public class UserInfo {
+public class UserInfo implements Serializable {
+    private static final long serialVersionUID = -4842487603457284682L;
     private int _id;
     private String name;
     private String nickName;

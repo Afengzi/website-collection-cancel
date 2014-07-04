@@ -1,5 +1,8 @@
 package com.afengzi.website.domain.node;
 
+import com.afengzi.website.domain.site.SiteVo;
+import org.apache.commons.collections.CollectionUtils;
+
 import java.util.List;
 
 /**
@@ -12,9 +15,16 @@ import java.util.List;
 public class NodeVo {
     private int _id;
     private String title;
-    private NodeVo nodeVo;
-    private List<NodeVo> latters;
+    private int prioriy;
+    private List<NodeVo> children;
+    private List<SiteVo> websiteVos;
 
+    public boolean hasChildren(){
+        return CollectionUtils.isNotEmpty(children) ;
+    }
+    public boolean hasLeaf(){
+        return CollectionUtils.isNotEmpty(websiteVos) ;
+    }
     public int get_id() {
         return _id;
     }
@@ -31,19 +41,27 @@ public class NodeVo {
         this.title = title;
     }
 
-    public NodeVo getNodeVo() {
-        return nodeVo;
+    public int getPrioriy() {
+        return prioriy;
     }
 
-    public void setNodeVo(NodeVo nodeVo) {
-        this.nodeVo = nodeVo;
+    public void setPrioriy(int prioriy) {
+        this.prioriy = prioriy;
     }
 
-    public List<NodeVo> getLatters() {
-        return latters;
+    public List<NodeVo> getChildren() {
+        return children;
     }
 
-    public void setLatters(List<NodeVo> latters) {
-        this.latters = latters;
+    public void setChildren(List<NodeVo> children) {
+        this.children = children;
+    }
+
+    public List<SiteVo> getWebsiteVos() {
+        return websiteVos;
+    }
+
+    public void setWebsiteVos(List<SiteVo> websiteVos) {
+        this.websiteVos = websiteVos;
     }
 }

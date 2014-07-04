@@ -84,7 +84,7 @@ public class MongodbTest extends MongoBase{
         nodes.add(leaf1);
         nodes.add(leaf2) ;
 
-        root.setLatter(nodes);
+        root.setChildren(nodes);
 
         JSONObject jsonObject = JSONObject.fromObject(root) ;
         DBObject dbObject = (DBObject)JSON.parse(jsonObject.toString()) ;

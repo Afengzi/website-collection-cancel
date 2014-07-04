@@ -16,29 +16,31 @@ import java.net.UnknownHostException;
  */
 public class IdUtil extends MongoBase {
 
-    public static Long getId(String name){
-        Sequence sequence = new Sequence();
-        sequence.setBlockSize(10);
+    private static Sequence sequence = new Sequence();
+
+    public static Long getId(String name) {
+
+        sequence.setBlockSize(2);
         sequence.setMongo(mongo());
 
         SequenceUtil util = new SequenceUtil();
         util.setDefaultSequence(sequence);
 
-        long id = util.get(name) ;
+        long id = util.get(name);
         System.out.println(id);
-        return id ;
+        return id;
 
     }
 
-    private static Mongo mongo(){
+    private static Mongo mongo() {
         try {
-            DBAddress address = new DBAddress("127.0.0.1",27017,"website");
+            DBAddress address = new DBAddress("127.0.0.1", 27017, "website");
             Mongo mongo = new Mongo(address);
             return mongo;
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        return null ;
+        return null;
 
     }
 

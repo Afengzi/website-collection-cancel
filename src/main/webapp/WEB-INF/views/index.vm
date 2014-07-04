@@ -1,23 +1,39 @@
 <html>
 <head>
     <title>Home</title>
+    <link rel="stylesheet" style="text/css" href="extjs-4.1.0/resources/css/ext-all.css"/>
 </head>
+<script type="text/javascript" src="extjs-4.1.0/ext-all.js"></script>
+<script type="text/javascript" src="ext-4.0.1/locale/ext-lang-zh_CN.js"></script>
 <body>
 <tbody>
-##    #if($!categoryVoList && categoryVoList.size()>0)
-      #foreach($categoryVo in $categoryVoList)
+<script>
+    Ext.onReady(function () {
+    })
+</script>
+    #if($websites && $websites.size()>0)
+        #foreach($website in $websites)
+            <table border="1">
+                <tr>
+                    <td>website.title</td>
+                </tr>
+                #if($website.children && $website.children.size()>0)
+                    #foreach($child in $website.children)
+                        <tr>
+                            <td>$child.title</td>
+                            #if($child.websiteVos && $child.websiteVos.size()>0)
+                                #foreach($site in $child.websiteVos)
+                                    <<td><a href="$site.url" target="_blank">$site.title</a> </td>
+                                #end
+                            #end
+                        </tr>
+                    #end
+                #end
+            </table>
+        #end
 
-          <table border="1">
-              <tr>
-                  <td>$!categoryVo.categoryName</td>
-##                  <td><a href="$!websiteVo.url">$!websiteVo.title</a></td>
 
-
-              </tr>
-
-          </table>
-
-      #end
+    #end
 
 ##    #end
 

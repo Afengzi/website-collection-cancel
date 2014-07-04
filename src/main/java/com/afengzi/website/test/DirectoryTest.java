@@ -1,10 +1,14 @@
 package com.afengzi.website.test;
 
+import com.afengzi.website.domain.CollectionConstant;
 import com.afengzi.website.domain.node.Node;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
 import net.sf.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,9 +23,9 @@ public class DirectoryTest extends MongoBase {
 
     public static void main(String[] arg){
         DirectoryTest dir = new DirectoryTest();
+        dir.testSaveDirectory();
 //        dir.testSaveDirectory();
-        dir.testUpdate();
-
+//        dir.testConvert();
 //        System.out.print(dir.getNewDbObject("dd",1));
     }
 
@@ -56,6 +60,17 @@ public class DirectoryTest extends MongoBase {
         node.setTitle(newTitle);
         node.setDepth(depth);
         node.set_id(IdUtil.getId(WEBSITE_DIRECTORY_COLLECTION));
+        node.setUserName(CollectionConstant.WEBSITE_GUEST);
+
+        Node leaf = new Node();
+        leaf.setTitle("JAVA");
+        leaf.setDepth(1);
+        leaf.set_id(IdUtil.getId(WEBSITE_DIRECTORY_COLLECTION));
+
+        List<Node> leafs = new ArrayList<Node>();
+        leafs.add(leaf);
+
+        node.setChildren(leafs);
         return node ;
     }
 
@@ -64,5 +79,12 @@ public class DirectoryTest extends MongoBase {
         DBObject dbObject = (DBObject) JSON.parse(jsonObject.toString()) ;
 
         return dbObject ;
+    }
+
+    private void testConvert(){
+        DBObject dbObject = new BasicDBObject();
+        dbObject.put("name","klov");
+        JSONObject jsonObject = JSONObject.fromObject(dbObject);
+        System.out.println(jsonObject.toString());
     }
 }

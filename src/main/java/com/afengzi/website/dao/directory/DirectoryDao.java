@@ -1,6 +1,9 @@
-package com.afengzi.website.dao.group;
+package com.afengzi.website.dao.directory;
 
 import com.afengzi.website.domain.node.Node;
+import org.springframework.data.mongodb.core.query.Query;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,8 +12,11 @@ import com.afengzi.website.domain.node.Node;
  * Time: обнГ6:36
  * To change this template use File | Settings | File Templates.
  */
-public interface WebsiteGroupDao {
+public interface DirectoryDao {
+
     public void persist(Node node);
+
+    public List<Node> query(Query query);
 
 
 }
