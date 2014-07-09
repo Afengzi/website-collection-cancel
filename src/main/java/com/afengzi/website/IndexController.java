@@ -50,7 +50,7 @@ public class IndexController {
     public String index(Model model){
         String userName = "admin" ;
         model.addAttribute("websites",websiteService.queryByUser(CollectionConstant.WEBSITE_GUEST));
-        return "index";
+        return "esayUi";
     }
 
 

@@ -1,0 +1,17 @@
+/*.contentF{*/
+    /*font: 12px;*/
+    /*margin: 0px auto;*/
+    /*text-align: center;*/
+    /*background: #FFFFFF;*/
+/*}*/
+
+.tit {
+    float: left;
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    width: 80px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    color: #51187D;
+}

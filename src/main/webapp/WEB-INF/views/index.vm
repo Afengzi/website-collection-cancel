@@ -1,49 +1,87 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" style="text/css" href="extjs-4.1.0/resources/css/ext-all.css"/>
+##    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <style type="text/css">
+        .tit {
+            float: left;
+            font-size: 18px;
+            font-family: "microsoft yahei";
+            width: 80px;
+            font-weight: bold;
+            height: 35px;
+            line-height: 35px;
+            color: #51187D;
+            text-align: center;
+
+        }
+
+        .content {
+            text-align: center;
+            font-family: "microsoft yahei";
+            margin-top: 150px;
+            margin-left: 150px;
+        }
+
+        .font_direc {
+            font-size: 18px;
+            color: #51187D;
+        }
+
+
+    </style>
 </head>
-<script type="text/javascript" src="extjs-4.1.0/ext-all.js"></script>
-<script type="text/javascript" src="ext-4.0.1/locale/ext-lang-zh_CN.js"></script>
 <body>
-<tbody>
-<script>
-    Ext.onReady(function () {
-    })
-</script>
-    #if($websites && $websites.size()>0)
-        #foreach($website in $websites)
-            <table border="1">
-                <tr>
-                    <td>website.title</td>
-                </tr>
-                #if($website.children && $website.children.size()>0)
-                    #foreach($child in $website.children)
-                        <tr>
-                            <td>$child.title</td>
-                            #if($child.websiteVos && $child.websiteVos.size()>0)
-                                #foreach($site in $child.websiteVos)
-                                    <<td><a href="$site.url" target="_blank">$site.title</a> </td>
-                                #end
+<table class="content">
+##    <tr>
+##        <td colspan="2" style="background-color:#99bbbb;">
+##            <h1>split...</h1>
+##        </td>
+##    </tr>
+
+    <tr">
+##        <td style="background-color:#ffff99;text-align:top;">
+##            <b>π˘æ∏</b><br/>
+##            —Óøµ<br/>
+##            ¿œÕ∑<br/>
+##            ÕÍ—’∫È¡“
+##        </td>
+        <td style="background-color:#EEEEEE;text-align:top;">
+            <table>
+                #if($websites && $websites.size()>0)
+                    #foreach($website in $websites)
+                        <tr>$!website.title</tr>
+                        #if($website.children && $website.children.size()>0)
+                            #foreach($child in $website.children)
+                                <tr>
+                                    <td> $child.title</td>
+
+                                    #if($child.websiteVos && $child.websiteVos.size()>0)
+                                        <td>
+                                            #foreach($site in $child.websiteVos)
+                                                <a href="$site.url" target="_blank">$site.title</a>
+                                            #end
+                                        </td>
+                                    #end
+                                </tr>
                             #end
-                        </tr>
+                        #end
                     #end
                 #end
             </table>
-        #end
+        </td>
+    </tr>
+    <tr>
+
+    </tr>
+
+##    <tr>
+##        <td colspan="2" style="background-color:#99bbbb;text-align:center;">
+##            website.afengzi.com.cn
+##        </td>
+##    </tr>
+</table>
 
 
-    #end
-
-##    #end
-
-
-</tbody>
-
-<h1>
-    Hello world!
-</h1>
-
-<P> The time on the server is $serverTime. </P>
 </body>
 </html>
