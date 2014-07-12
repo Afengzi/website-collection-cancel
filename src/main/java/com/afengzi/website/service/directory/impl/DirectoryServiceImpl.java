@@ -1,6 +1,7 @@
 package com.afengzi.website.service.directory.impl;
 
 import com.afengzi.website.domain.node.Node;
+import com.afengzi.website.domain.node.NodeVo;
 import com.afengzi.website.manager.directory.DirectoryManager;
 import com.afengzi.website.service.directory.DirectoryService;
 import net.sf.json.JSONArray;
@@ -24,10 +25,15 @@ public class DirectoryServiceImpl implements DirectoryService {
 
     @Override
     public String queryByUser(String userName) {
-       List<Node> nodes = directoryManager.queryByUser(userName) ;
+       List<NodeVo> nodes = directoryManager.queryByUser(userName) ;
        if (CollectionUtils.isEmpty(nodes)){
            return "";
        }
         return JSONArray.fromObject(nodes).toString();
+    }
+
+    @Override
+    public List<NodeVo> queryNodeVosByUser(String userName) {
+        return directoryManager.queryByUser(userName) ;
     }
 }

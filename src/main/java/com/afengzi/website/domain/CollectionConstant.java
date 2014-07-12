@@ -9,5 +9,6 @@ package com.afengzi.website.domain;
  */
 public class CollectionConstant {
     public static final String WEBSITE_GUEST="guest" ;
-    public static final String DIRECTORY_SITES_USER_NAME = "userName" ;
+    public static final String DIRECTORY_USER_NAME = "userName" ;
+    public static final String SITES_USER_NAME = "userName" ;
 }

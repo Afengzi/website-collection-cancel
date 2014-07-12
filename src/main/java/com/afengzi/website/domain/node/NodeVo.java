@@ -13,23 +13,28 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class NodeVo {
-    private int _id;
+
+    private transient long id ;
+    private transient String text ;
+    private long _id;
     private String title;
     private int prioriy;
     private List<NodeVo> children;
     private List<SiteVo> websiteVos;
 
-    public boolean hasChildren(){
-        return CollectionUtils.isNotEmpty(children) ;
+    public boolean hasChildren() {
+        return CollectionUtils.isNotEmpty(children);
     }
-    public boolean hasLeaf(){
-        return CollectionUtils.isNotEmpty(websiteVos) ;
+
+    public boolean hasLeaf() {
+        return CollectionUtils.isNotEmpty(websiteVos);
     }
-    public int get_id() {
+
+    public long get_id() {
         return _id;
     }
 
-    public void set_id(int _id) {
+    public void set_id(long _id) {
         this._id = _id;
     }
 
@@ -64,4 +69,13 @@ public class NodeVo {
     public void setWebsiteVos(List<SiteVo> websiteVos) {
         this.websiteVos = websiteVos;
     }
+
+    public long getId() {
+        return get_id();
+    }
+
+    public String getText() {
+        return getTitle();
+    }
+
 }

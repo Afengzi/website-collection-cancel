@@ -11,9 +11,9 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-25
- * Time: ÉÏÎç9:17
+ * Time: ä¸Šåˆ9:17
  * To change this template use File | Settings | File Templates.
- * ½ÚµãbeanÀà:Èç¹ûsiteIds²»Îª¿ÕÔò±íÊ¾ÓĞÒ¶×Ó
+ * èŠ‚ç‚¹beanç±»:å¦‚æœsiteIdsä¸ä¸ºç©ºåˆ™è¡¨ç¤ºæœ‰å¶å­
  */
 public class Node extends BaseDomain implements Serializable {
 
@@ -24,18 +24,19 @@ public class Node extends BaseDomain implements Serializable {
     private Node previous;
     private String userName;
     /**
-     * ×Ó½Úµã
+     * å­èŠ‚ç‚¹
      */
     private List<Node> children;
     /**
-     * Õ¾µãID,Ïàµ±ÓÚÒ¶×ÓID
+     * ç«™ç‚¹ID,ç›¸å½“äºå¶å­ID
      */
     private List<Long> siteIds;
+    private int status;
     private Date created;
     private Date modified;
 
-    public boolean hasChildren(){
-        return CollectionUtils.isNotEmpty(children) ;
+    public boolean hasChildren() {
+        return CollectionUtils.isNotEmpty(children);
     }
 
     public String getTitle() {
@@ -108,5 +109,13 @@ public class Node extends BaseDomain implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -8,6 +8,7 @@ import com.afengzi.website.domain.node.NodeVo;
 import com.afengzi.website.domain.site.Site;
 import com.afengzi.website.domain.site.SiteVo;
 import com.afengzi.website.manager.website.WebsiteManager;
+import com.afengzi.website.util.BeanUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.log4j.Logger;
@@ -40,25 +41,36 @@ public class WebsiteManagerImpl implements WebsiteManager {
 
     @Override
     public List<NodeVo> queryByUser(String userName) {
-        Query query = Query.query(Criteria.where(CollectionConstant.DIRECTORY_SITES_USER_NAME).is(userName));
+        Query query = Query.query(Criteria.where(CollectionConstant.DIRECTORY_USER_NAME).is(userName));
         List<Node> nodes = directoryDao.query(query);
         if (CollectionUtils.isEmpty(nodes)) {
             return null;
         }
-        List<NodeVo> nodeVos = copyNodeProperties(nodes);
+        List<NodeVo> nodeVos = BeanUtil.copyNodeProperties(nodes);
         List<Site> sites = siteDao.query(query);
         if (CollectionUtils.isEmpty(sites)) {
             return nodeVos;
         }
 
-        Map<Integer, List<SiteVo>> siteVosMap = getSiteVosMap(copySiteProperties(sites));
+        Map<Long, List<SiteVo>> siteVosMap = getSiteVosMap(BeanUtil.copySiteProperties(sites));
         joinNodeAndSite(nodeVos, siteVosMap);
 
         return nodeVos;
 
     }
 
-    private void joinNodeAndSite(List<NodeVo> nodeVos, Map<Integer, List<SiteVo>> siteVosMap) {
+    @Override
+    public List<SiteVo> querySiteVosByUser(String userName) {
+
+        Query query = Query.query(Criteria.where(CollectionConstant.SITES_USER_NAME).is(userName)) ;
+        List<Site> sites = siteDao.query(query) ;
+        if (CollectionUtils.isNotEmpty(sites)){
+            return BeanUtil.copySiteProperties(sites) ;
+        }
+        return null ;
+    }
+
+    private void joinNodeAndSite(List<NodeVo> nodeVos, Map<Long, List<SiteVo>> siteVosMap) {
         if (CollectionUtils.isEmpty(nodeVos) || siteVosMap.isEmpty()) {
             return;
         }
@@ -77,8 +89,8 @@ public class WebsiteManagerImpl implements WebsiteManager {
      * @param siteVos
      * @return nodeIdΪkey
      */
-    private Map<Integer, List<SiteVo>> getSiteVosMap(List<SiteVo> siteVos) {
-        Map<Integer, List<SiteVo>> sitesMap = new HashMap<Integer, List<SiteVo>>();
+    private Map<Long, List<SiteVo>> getSiteVosMap(List<SiteVo> siteVos) {
+        Map<Long, List<SiteVo>> sitesMap = new HashMap<Long, List<SiteVo>>();
 
         List<SiteVo> siteVosNew = null;
         for (SiteVo siteVo : siteVos) {
@@ -99,40 +111,4 @@ public class WebsiteManagerImpl implements WebsiteManager {
 
     }
 
-    private List<SiteVo> copySiteProperties(List<Site> sites) {
-        List<SiteVo> siteVos = new ArrayList<SiteVo>();
-        SiteVo siteVo = null;
-        for (Site site : sites) {
-            siteVo = new SiteVo();
-            try {
-                BeanUtils.copyProperties(siteVo, site);
-            } catch (IllegalAccessException e) {
-                logger.error("site-->siteVo error.", e);
-            } catch (InvocationTargetException e) {
-                logger.error("site-->siteVo error.", e);
-            }
-            siteVos.add(siteVo);
-        }
-        return siteVos;
-    }
-
-    private List<NodeVo> copyNodeProperties(List<Node> nodes) {
-        List<NodeVo> nodeVos = new ArrayList<NodeVo>();
-        NodeVo nodeVo = null;
-        for (Node node : nodes) {
-            nodeVo = new NodeVo();
-            try {
-                BeanUtils.copyProperties(nodeVo, node);
-                if (node.hasChildren()){
-                    nodeVo.setChildren(copyNodeProperties(node.getChildren()));
-                }
-            } catch (IllegalAccessException e) {
-                logger.error("site-->siteVo error.", e);
-            } catch (InvocationTargetException e) {
-                logger.error("site-->siteVo error.", e);
-            }
-            nodeVos.add(nodeVo);
-        }
-        return nodeVos;
-    }
 }

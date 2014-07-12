@@ -1,23 +1,23 @@
-1¡¢mongodb_start.bat
+1ã€mongodb_start.bat
 	E:\green_software\mongodb-32-2.4.8\bin\mongod -dbpath G:\mongodb_data
 
-2¡¢mongodb_use.bat
+2ã€mongodb_use.bat
 	E:\green_software\mongodb-32-2.4.8\bin\mongo.exe
-	
-3¡¢„“½¨”µ“þŽì
+
+3ã€å‰µå»ºæ•¸æ“šåº«
 	 use website
 
-4¡¢ ²é¿´µ±Ç°¿â
+4ã€ æŸ¥çœ‹å½“å‰åº“
 	db
 
-5¡¢´´½¨¼¯ºÏ
+5ã€åˆ›å»ºé›†åˆ
 	db.createCollection("website.sites")
 	{ "ok" : 1 }
-	
-6¡¢Õ¹Ê¾ËùÓÐ¿â
+
+6ã€å±•ç¤ºæ‰€æœ‰åº“
 	 show dbs
 
-7¡¢findAndModifyÃüÁî{¸ÃÃüÁîÊÇÔ­×Ó²Ù×÷,Ïß³Ì°²È«.Éú³É×ÔÔö³¤µÄID}
+7ã€findAndModifyå‘½ä»¤{è¯¥å‘½ä»¤æ˜¯åŽŸå­æ“ä½œ,çº¿ç¨‹å®‰å…¨.ç”Ÿæˆè‡ªå¢žé•¿çš„ID}
     db.runCommand(
         {
           findAndModify:"website.sequence_value",
@@ -28,23 +28,42 @@
 
     db.website.sequence_value.find()
 
-8¡¢db.website.sites.save(
+8ã€db.website.sites.save(
     {
         "_id":1,
-        "title":"¾©¶«ÉÌ³Ç",
+        "title":"äº¬ä¸œå•†åŸŽ",
         "url":"http://jd.com",
         "priority":0,
         "description":"life",
         "node_id":"191",
-        "node_name":"¿ª·¢",
+        "node_name":"å¼€å‘",
         "created":new Date(),
         "modified":new Date()
     }
 )
 
-9¡¢value²»´æÔÚÊ±Ôö¼ÓÒ»¸öfield
+9ã€valueä¸å­˜åœ¨æ—¶å¢žåŠ ä¸€ä¸ªfield
 
     db.website.sites.update({"_id":1},{"$set":{"userName":"admin"}})
 
-    db.website.sites.update({"_id":1},{"$set":{"parentName":"¿Æ¼¼","parentId":191}})
+    db.website.sites.update({"_id":1},{"$set":{"parentName":"ç§‘æŠ€","parentId":191}})
+
+    db.website.sites.update({"$set":{"status":1}})
+
+
+10ã€upset è®°å½•ä¸å­˜åœ¨æ—¶æ’å…¥ä¸€æ¡è®°å½•ï¼Œå­˜åœ¨åˆ™å¯¹æŒ‡å®šçš„å­—æ®µ+1
+
+11ã€å¾ªçŽ¯æ’å…¥æ•°æ®
+    > for(var i = 2 ; i < 11 ; i++){
+    ... db.website.sites.insert(
+    ... {
+    ... "_id" : i,
+    ... "created" : null,
+    ... "description" : "",
+    ... "modified" : null,
+    ... "nodeId" : 2,
+    ... "nodeName" : "JAVA","priority" : 0,"title" : "oracle","url" : "http://oracle
+    .com","userName" : "guest"});}
+    WriteResult({ "nInserted" : 1 })
+    >
 

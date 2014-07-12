@@ -1,5 +1,9 @@
 package com.afengzi.website.service.directory;
 
+import com.afengzi.website.domain.node.NodeVo;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: lixiuhai
@@ -10,4 +14,6 @@ package com.afengzi.website.service.directory;
 public interface DirectoryService {
 
     public String queryByUser(String userName);
+
+    public List<NodeVo> queryNodeVosByUser(String userName) ;
 }

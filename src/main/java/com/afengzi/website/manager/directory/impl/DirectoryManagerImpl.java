@@ -3,7 +3,10 @@ package com.afengzi.website.manager.directory.impl;
 import com.afengzi.website.dao.directory.DirectoryDao;
 import com.afengzi.website.domain.CollectionConstant;
 import com.afengzi.website.domain.node.Node;
+import com.afengzi.website.domain.node.NodeVo;
 import com.afengzi.website.manager.directory.DirectoryManager;
+import com.afengzi.website.util.BeanUtil;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -24,10 +27,12 @@ public class DirectoryManagerImpl implements DirectoryManager {
     @Autowired
     private DirectoryDao directoryDao ;
     @Override
-    public List<Node> queryByUser(String userName) {
-        Query query = new Query(Criteria.where(CollectionConstant.WEBSITE_GUEST).is(userName));
+    public List<NodeVo> queryByUser(String userName) {
+        Query query = new Query(Criteria.where(CollectionConstant.DIRECTORY_USER_NAME).is(userName));
         List<Node> nodes = directoryDao.query(query) ;
-
-        return nodes ;
+        if (CollectionUtils.isNotEmpty(nodes)){
+            return BeanUtil.copyNodeProperties(nodes) ;
+        }
+        return null ;
     }
 }

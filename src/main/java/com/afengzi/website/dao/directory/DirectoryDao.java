@@ -1,6 +1,7 @@
 package com.afengzi.website.dao.directory;
 
 import com.afengzi.website.domain.node.Node;
+import com.afengzi.website.domain.site.Site;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface DirectoryDao {
     public void persist(Node node);
 
     public List<Node> query(Query query);
+
+
 
 
 }

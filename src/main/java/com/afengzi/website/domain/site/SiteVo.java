@@ -8,12 +8,14 @@ package com.afengzi.website.domain.site;
  * To change this template use File | Settings | File Templates.
  */
 public class SiteVo {
+    private transient long id ;
+    private transient String text ;
     private long _id;
     private String title;
     private String url;
     private String description;
     private int priority = 0;
-    private int nodeId;
+    private long nodeId;
     private String nodeName;
     private String userName;
 
@@ -57,11 +59,11 @@ public class SiteVo {
         this.priority = priority;
     }
 
-    public int getNodeId() {
+    public long getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(int nodeId) {
+    public void setNodeId(long nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -79,5 +81,13 @@ public class SiteVo {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public long getId() {
+        return get_id() ;
+    }
+
+    public String getText() {
+        return getTitle();
     }
 }

@@ -8,13 +8,18 @@ package com.afengzi.website.util.sequence;
  * To change this template use File | Settings | File Templates.
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 /**
  * 可以指定一个序列增长器,也可以使用默认的
  */
+@Component
 public class SequenceUtil {
 
     private Map<String, Sequence> sequenceMap;
+    @Autowired
     private Sequence defaultSequence;
 
     public void setDefaultSequence(Sequence defaultSequence) {

@@ -1,6 +1,7 @@
 package com.afengzi.website.manager.website;
 
 import com.afengzi.website.domain.node.NodeVo;
+import com.afengzi.website.domain.site.SiteVo;
 
 import java.util.List;
 
@@ -13,4 +14,11 @@ import java.util.List;
  */
 public interface WebsiteManager {
     List<NodeVo> queryByUser(String userName);
+
+    /**
+     *
+     * @param userName
+     * @return
+     */
+    List<SiteVo> querySiteVosByUser(String userName) ;
 }

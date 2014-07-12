@@ -5,6 +5,8 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +15,10 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-27
- * Time: ����9:49
+ * Time: ????9:49
  * To change this template use File | Settings | File Templates.
  */
+@Component
 public class Sequence {
 
     private static final String COLLECTION_NAME = "website.sequence_value";
@@ -25,6 +28,7 @@ public class Sequence {
     private static final Logger logger = Logger.getLogger("Sequence");
     private long start = 0;
     private int blockSize = 5;
+    @Autowired
     private Mongo mongo;
     private Map<String, Step> sequenceMap = new HashMap<String, Step>();
 
@@ -63,10 +67,10 @@ public class Sequence {
     }
 
     /**
-     * findAndModify ����blockSize
+     * findAndModify ????blockSize
      *
      * @param name
-     * @return !=Null:���ӳɹ� Null:name������,���ȱ���name�ĵ�
+     * @return !=Null:?????? Null:name??????,???????name???
      */
     private Long incrementAndGet(String name) {
         DBCollection collection = mongo.getDB(DATABASE_NAME).getCollection(COLLECTION_NAME);

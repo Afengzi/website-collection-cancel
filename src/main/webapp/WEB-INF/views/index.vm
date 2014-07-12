@@ -1,87 +1,94 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-##    <link rel="stylesheet" type="text/css" href="css/index.css"/>
-    <style type="text/css">
-        .tit {
-            float: left;
-            font-size: 18px;
-            font-family: "microsoft yahei";
-            width: 80px;
-            font-weight: bold;
-            height: 35px;
-            line-height: 35px;
-            color: #51187D;
-            text-align: center;
+    <title>ÁΩëÁ´ô360Â∫¶Êó†Ê≠ªËßí</title>
+    <link rel="stylesheet" type="text/css" href="../../css/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../css/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../css/demo.css">
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
 
-        }
-
-        .content {
-            text-align: center;
-            font-family: "microsoft yahei";
-            margin-top: 150px;
-            margin-left: 150px;
-        }
-
-        .font_direc {
-            font-size: 18px;
-            color: #51187D;
-        }
-
-
-    </style>
+    <script type="text/javascript" src="../../js/form.js"></script>
 </head>
-<body>
-<table class="content">
-##    <tr>
-##        <td colspan="2" style="background-color:#99bbbb;">
-##            <h1>split...</h1>
-##        </td>
-##    </tr>
+<body class="easyui-layout">
+<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">sites.afengzi.com
+</div>
+<!--
+<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">west content</div>
+-->
+<!--
+<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
+-->
+<div data-options="region:'west',split:true,title:'West'" style="width:150px;padding:10px;">
+    <ul class="easyui-tree" data-options="url:'/directory',method:'get',animate:true,dnd:true"></ul>
+</div>
+<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">ÁΩëÁ´ô360¬∞</div>
+<div data-options="region:'center',title:'Center'">
+    <table style="width:auto;height:auto;">
+        #if($sitesMap && $sitesMap.size()>0)
+            #foreach($nodeId in $sitesMap.keySet())
+                <tr>
+                    <th field="$nodeId" width="50">$nodeMap.get($nodeId)</th>
+                    <th><img id="addImg" src="../../image/add_site.png" onclick="$('#dlg').dialog('open')"></th>
+                    <th hidden="true">$nodeId</th>
+                    <th>$nodeId</th>
+                </tr>
+                <tbody>
+                    #set($siteVos = ${sitesMap.get($nodeId)})
+                    #if($siteVos && $siteVos.size()>0)
+                    <tr>
+                        #foreach($siteVo in $siteVos)
 
-    <tr">
-##        <td style="background-color:#ffff99;text-align:top;">
-##            <b>π˘æ∏</b><br/>
-##            —Óøµ<br/>
-##            ¿œÕ∑<br/>
-##            ÕÍ—’∫È¡“
-##        </td>
-        <td style="background-color:#EEEEEE;text-align:top;">
-            <table>
-                #if($websites && $websites.size()>0)
-                    #foreach($website in $websites)
-                        <tr>$!website.title</tr>
-                        #if($website.children && $website.children.size()>0)
-                            #foreach($child in $website.children)
-                                <tr>
-                                    <td> $child.title</td>
+                            <td>
+                                <a href="$!siteVo.url" target="_blank">$!siteVo.title</a>
+                            </td>
 
-                                    #if($child.websiteVos && $child.websiteVos.size()>0)
-                                        <td>
-                                            #foreach($site in $child.websiteVos)
-                                                <a href="$site.url" target="_blank">$site.title</a>
-                                            #end
-                                        </td>
-                                    #end
-                                </tr>
-                            #end
                         #end
+                    </tr>
                     #end
-                #end
-            </table>
-        </td>
-    </tr>
-    <tr>
+                </tbody>
 
-    </tr>
+            #end
+        #end
 
-##    <tr>
-##        <td colspan="2" style="background-color:#99bbbb;text-align:center;">
-##            website.afengzi.com.cn
-##        </td>
-##    </tr>
-</table>
+    </table>
+</div>
 
+<div id="dlg" class="easyui-dialog" title="Complex Toolbar on Dialog" style="width:auto;height:auto;padding:10px"
+     data-options="
+				iconCls: 'icon-save',
+				toolbar: '#dlg-toolbar',
+				buttons: '#dlg-buttons'
+			">
+    The dialog content.
+    <form id="addForm" action="#" method="post">
+        <label>ÁõÆÂΩï      <input type="text" name="direName" id="direName"/></label><br/>
+        <select></select>
+        <label>ÁõÆÂΩïID    <input type="text" name="direId" id="direId"/></label><br/>
+        <label>Á´ôÁÇπÂêçÂ≠ó  <input type="text" name="siteTitle" id="siteTitle"/></label><br/>
+        <label>Á´ôÁÇπURL   <input type="text" name="siteUrl" id="siteUrl"/></label><br/>
+        <label>Á´ôÁÇπ      <input type="submit" value="submit"/></label>
+
+    </form>
+</div>
+<div id="dlg-toolbar" style="padding:2px 0">
+    <table cellpadding="0" cellspacing="0" style="width:100%">
+        <tr>
+            <td style="padding-left:2px">
+                <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">Edit</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">Help</a>
+            </td>
+            <td style="text-align:right;padding-right:2px">
+                <input class="easyui-searchbox" data-options="prompt:'Please input somthing'"
+                       style="width:150px"></input>
+            </td>
+        </tr>
+    </table>
+</div>
+<div id="dlg-buttons">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="addSite()">Save</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#dlg').dialog('close')">Close</a>
+</div>
 
 </body>
 </html>

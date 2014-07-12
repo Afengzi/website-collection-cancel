@@ -1,0 +1,6 @@
+/* 0 */
+{
+  "_id" : ObjectId("53b60235c2da30aa24985d81"),
+  "name" : "website.directory",
+  "id_value" : NumberLong(10)
+}

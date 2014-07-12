@@ -1,6 +1,7 @@
 package com.afengzi.website.manager.directory;
 
 import com.afengzi.website.domain.node.Node;
+import com.afengzi.website.domain.node.NodeVo;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
  */
 public interface DirectoryManager {
 
-    public List<Node> queryByUser(String userName);
+    public List<NodeVo> queryByUser(String userName);
 }

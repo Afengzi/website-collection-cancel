@@ -14,7 +14,7 @@ import java.util.Date;
  * <p/>
  * <file>Site.java</file>
  * <p/>
- * <date>2014Äê6ÔÂ9ÈÕ ÏÂÎç10:16:26</date>
+ * <date>2014ï¿½ï¿½6ï¿½ï¿½9ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½10:16:26</date>
  * <p/>
  * <brief></brief>
  *
@@ -30,6 +30,7 @@ public class Site extends BaseDomain implements Serializable {
     private int nodeId;
     private String nodeName;
     private String userName;
+    private int status;
     private Date created;
     private Date modified;
 
@@ -105,4 +106,11 @@ public class Site extends BaseDomain implements Serializable {
         this.userName = userName;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

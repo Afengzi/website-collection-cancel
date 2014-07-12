@@ -1,8 +1,10 @@
 package com.afengzi.website.service.website;
 
 import com.afengzi.website.domain.node.NodeVo;
+import com.afengzi.website.domain.site.SiteVo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,4 +16,11 @@ import java.util.List;
 public interface WebsiteService {
 
     public List<NodeVo> queryByUser(String userName) ;
+
+    /**
+     * ²éÑ¯ÍøÕ¾µã
+     * @param userName
+     * @return
+     */
+    public Map<String,Object> querySitesByUser(String userName) ;
 }
