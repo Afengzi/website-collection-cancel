@@ -20,5 +20,6 @@
   "priority" : 0,
   "siteIds" : [],
   "title" : "科技",
-  "userName" : "guest"
+  "userName" : "guest",
+  "status" : 1
 }
