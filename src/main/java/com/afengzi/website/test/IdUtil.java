@@ -1,5 +1,6 @@
 package com.afengzi.website.test;
 
+import com.afengzi.data.importdb.MongoBase;
 import com.afengzi.website.util.sequence.Sequence;
 import com.afengzi.website.util.sequence.SequenceUtil;
 import com.mongodb.DBAddress;
@@ -11,7 +12,7 @@ import java.net.UnknownHostException;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-7-2
- * Time: ионГ9:42
+ * Time: О©╫О©╫О©╫О©╫9:42
  * To change this template use File | Settings | File Templates.
  */
 public class IdUtil extends MongoBase {

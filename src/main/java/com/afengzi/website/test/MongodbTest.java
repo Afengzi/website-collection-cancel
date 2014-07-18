@@ -1,6 +1,7 @@
 package com.afengzi.website.test;
 
 
+import com.afengzi.data.importdb.MongoBase;
 import com.afengzi.website.domain.node.Node;
 import com.afengzi.website.util.sequence.Sequence;
 import com.afengzi.website.util.sequence.SequenceUtil;
@@ -16,10 +17,10 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-6-25
- * Time: ÉÏÎç9:24
+ * Time: ï¿½ï¿½ï¿½ï¿½9:24
  * To change this template use File | Settings | File Templates.
  */
-public class MongodbTest extends MongoBase{
+public class MongodbTest extends MongoBase {
 
     private static final String WEBSITE_GROUP_COLLECTION = "website.directory" ;
     private static final String SEQUENCE_VALUE_COLLECTION = "sequence_value" ;
@@ -45,24 +46,24 @@ public class MongodbTest extends MongoBase{
     }
 
     public void automicInc(){
-        DBObject query = new BasicDBObject();
-        query.put("name",WEBSITE_GROUP_COLLECTION);
-
-        List<String> stringList = findStr(SEQUENCE_VALUE_COLLECTION) ;
-        System.out.println(stringList);
-
-        DBObject update = new BasicDBObject() ;
-        update.put("$inc",new BasicDBObject().append("value",1)) ;
-
-        DBObject result = new BasicDBObject() ;
-        result.put("new",true) ;
-//        update.put("_id",10);
-//        System.out.println(query);
-//        System.out.println(update);
-
-        DBObject dbObject = db.getCollection(SEQUENCE_VALUE_COLLECTION).findAndModify(query,update,result) ;
-
-        System.out.println(dbObject);
+//        DBObject query = new BasicDBObject();
+//        query.put("name",WEBSITE_GROUP_COLLECTION);
+//
+//        List<String> stringList = findStr(SEQUENCE_VALUE_COLLECTION) ;
+//        System.out.println(stringList);
+//
+//        DBObject update = new BasicDBObject() ;
+//        update.put("$inc",new BasicDBObject().append("value",1)) ;
+//
+//        DBObject result = new BasicDBObject() ;
+//        result.put("new",true) ;
+////        update.put("_id",10);
+////        System.out.println(query);
+////        System.out.println(update);
+//
+//        DBObject dbObject = db.getCollection(SEQUENCE_VALUE_COLLECTION).findAndModify(query,update,result) ;
+//
+//        System.out.println(dbObject);
     }
 
 
@@ -70,7 +71,7 @@ public class MongodbTest extends MongoBase{
     public DBObject getDbObject(){
         Node root = new Node();
         root.setDepth(0);
-        root.setTitle("¿Æ¼¼");
+        root.setTitle("ï¿½Æ¼ï¿½");
 
         Node leaf1 = new Node();
         leaf1.setDepth(1);

@@ -1,5 +1,6 @@
 package com.afengzi.website.test;
 
+import com.afengzi.data.importdb.MongoBase;
 import com.afengzi.website.domain.CollectionConstant;
 import com.afengzi.website.domain.node.Node;
 import com.mongodb.BasicDBObject;
@@ -14,7 +15,7 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-7-2
- * Time: ÉÏÎç9:38
+ * Time: ï¿½ï¿½ï¿½ï¿½9:38
  * To change this template use File | Settings | File Templates.
  */
 public class DirectoryTest extends MongoBase {
@@ -32,11 +33,11 @@ public class DirectoryTest extends MongoBase {
 
 
     public void testSaveDirectory() {
-        save(getNewNode("¿Æ¼¼",0),WEBSITE_DIRECTORY_COLLECTION);
+        save(getNewNode("ï¿½Æ¼ï¿½",0),WEBSITE_DIRECTORY_COLLECTION);
     }
 
     public void testUpdate(){
-        updateDire(191, "Êý¾Ý¿â", "¿Æ¼¼");
+        updateDire(191, "ï¿½ï¿½Ý¿ï¿½", "ï¿½Æ¼ï¿½");
     }
 
     public void updateDire(int parentId,String newTitle,String parentTitle){

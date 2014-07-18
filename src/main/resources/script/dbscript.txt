@@ -67,3 +67,6 @@
     WriteResult({ "nInserted" : 1 })
     >
 
+12、大于 $gt
+    {_id:{"$gt":1}}
+

@@ -1,5 +1,6 @@
 package com.afengzi.website.test;
 
+import com.afengzi.data.importdb.MongoBase;
 import com.afengzi.website.domain.CollectionConstant;
 import com.afengzi.website.domain.site.Site;
 import com.mongodb.DBObject;
@@ -10,7 +11,7 @@ import net.sf.json.JSONObject;
  * Created with IntelliJ IDEA.
  * User: lixiuhai
  * Date: 14-7-4
- * Time: ионГ9:31
+ * Time: О©╫О©╫О©╫О©╫9:31
  * To change this template use File | Settings | File Templates.
  */
 public class SitesTest extends MongoBase {
